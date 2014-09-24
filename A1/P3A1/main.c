@@ -14,9 +14,9 @@ int main(int argc, char* argv[]){
 	fgets(buffer,sizeof(buffer),stdin);
 
 	//Create an array of the size of the input.
-	fprintf(stderr,"the value is %s",buffer);
+	//fprintf(stderr,"the value is %s",buffer);
 	int length = atoi(buffer);	
-	fprintf(stderr,"the integer is %d\n",length);
+	//fprintf(stderr,"the integer is %d\n",length);
 	int array[length];
 
 	//Ask user to input the array with some values
@@ -42,19 +42,19 @@ int main(int argc, char* argv[]){
 		}
 		else{
 			//num < length, input validated
-			fprintf(stderr,"moving on\n");
+			//fprintf(stderr,"moving on\n");
 			checked = 0;
-			
+
 		}
 	}
 	while(checked==1);
-	fprintf(stderr,"num is %d\n",num);
+	fprintf(stderr,"Printing %d element(s)\n",num);
 
-	
+
 	int *ptrArray;
 	ptrArray = array;
 
-	
+
 	display(ptrArray,num);
 
 	return 0;
