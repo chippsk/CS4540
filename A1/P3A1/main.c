@@ -1,7 +1,11 @@
-//Kyle Chipps
-//Assignment 1
-//Question 3
-
+///*************************************************
+//* Course: CS 4540 – Fall 2014
+//* Assignment 1 - Problem 3
+//* Name: Kyle Chipps
+//* E-mail: kyle.d.chipps@wmich.edu
+//* Submitted: 09/25/14
+//
+//************************************************* 
 #include <stdio.h>
 #define MAX 25
 
