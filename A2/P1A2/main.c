@@ -1,0 +1,102 @@
+// Course: CS 4540 – Fall 2014
+// Assignment 2 - Problem 1
+// Name: Kyle Chipps
+// E-mail: kyle.d.chipps@wmich.edu
+// Submitted: 
+ 
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <string.h>
+
+//This is a prototype for the reverse case function.  
+char* reverse_case(char* str);
+
+//Main will handle the piping and forking and general communication between the two processes.
+//A string is inputted, then it prints it out to the user.
+//Then the string is piped to another process.  The second process calls a function that reverses the cases
+//of the string.
+//The second process returns the reversed case string to process one, where it is printed out for the user.
+int main(void){
+        //Input is 0 and Output is 1 for pipes.
+        int     a[2],b[2];
+        pid_t   childpid;
+        char    string[] = "Hello, world!\n";
+        char    readbuffera[80];
+        char    readbufferb[80];
+
+        fprintf(stderr,"The original string is, \n %s\n",string);
+        
+        if(pipe(a) == -1){
+                fprintf(stderr,"Frist pipe failed");
+                return 0;
+        }
+
+        if(pipe(b) == -1){
+                fprintf(stderr,"Second pipe failed");
+                return 0;
+        }
+
+        //Fork to create the second process.
+        if((childpid = fork()) == -1){
+                perror("fork");
+                exit(1);
+        }
+
+        if(childpid == 0){
+                //close input of a, will write using a
+                close(a[0]);
+                //close output of b, will read using b
+                close(b[1]);
+
+                //Send the string to the other process
+                fprintf(stderr,"In Process 1 the string that will get piped to Process 2 is, \n %s\n",string);
+                write(a[1], string, (strlen(string)+1));
+
+                //Get output of second pipe.
+                //nbytesb = read(b[0],readbufferb,sizeof(readbufferb));
+                if(read(b[0],readbufferb,sizeof(readbufferb)) == 0){
+                        fprintf(stderr,"Read in process 1 of second pipe encoutered an EOF\n");
+                }
+                fprintf(stderr,"Result read from process 2 is, \n %s\n",readbufferb);
+                exit(0);
+        }
+        else{
+                //Close output of a, will read from a
+                close(a[1]);
+                //Close input of b, will write using b
+                close(b[0]);
+
+                //Read from the input side of the pipe
+                //nbytesa = read(a[0], readbuffera, sizeof(readbuffera));
+                if(read(a[0], readbuffera, sizeof(readbuffera)) == 0){
+                        fprintf(stderr,"Read in parent process of first pipe encoutered an EOF\n");
+                }
+
+                fprintf(stderr,"Received string from child process: \n %s\n", readbuffera);
+
+                //Perform reversal of cases, and write to the second pipe.
+                fprintf(stderr,"The reversed string is, (from the parent process) \n %s\n",reverse_case(string));
+                write(b[1],string,(strlen(string)+1));
+        }
+        
+        return(0);
+}
+
+//Reverses the case of each char in the string.
+//Takes input and will perform an upper operation on each char
+//if the char is lowercase.  
+//This function will step through each char in a string.
+char* reverse_case(char* str) {
+    if (str) {
+        char* p;
+        int c;
+        for (p = str; ((c=*p)!=0); ++p)
+            if (isalpha(c))
+                *p = (islower(c)?toupper(c):tolower(c));
+    }
+    return str;
+}
+       

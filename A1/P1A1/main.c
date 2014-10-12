@@ -8,7 +8,7 @@
 //************************************************* 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <inttypes.h>
 int main(int argc, char* argv[]){
 	//Suppose fred is a double
 	double fred;
@@ -25,9 +25,11 @@ int main(int argc, char* argv[]){
 	//With pointer
 	fprintf(stderr,"The address of freds pointer is %d\n",&ptrFred);
 	fprintf(stderr,"The address of freds pointer is %x\n",&ptrFred);
+	fprintf(stderr,"The address of freds pointer is %0lx\n",&ptrFred);
 	//without pointer
 	fprintf(stderr,"The address of fred is %d\n",&fred);
 	fprintf(stderr,"The address of fred is %x\n",&fred);
+	fprintf(stderr,"The address of fred is %0lx\n",&fred);
 	//Change value of fred using pointer
 	*ptrFred = 45;
 	//Display new value of fred with pointer
