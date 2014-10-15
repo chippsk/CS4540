@@ -1,0 +1,30 @@
+Script started on Wed 15 Oct 2014 04:39:33 PM EDT
+]0;kyle@kyle-VirtualBox: ~/CS4540/A2kyle@kyle-VirtualBox:~/CS4540/A2$ ls
+makefile  [0m[01;34mP1A2[0m  README.md  typescript
+]0;kyle@kyle-VirtualBox: ~/CS4540/A2kyle@kyle-VirtualBox:~/CS4540/A2$ make clean
+rm -rf P1A2/*.o
+]0;kyle@kyle-VirtualBox: ~/CS4540/A2kyle@kyle-VirtualBox:~/CS4540/A2$ make 
+gcc -o P1A2/q1.out P1A2/main.c
+]0;kyle@kyle-VirtualBox: ~/CS4540/A2kyle@kyle-VirtualBox:~/CS4540/A2$ ./P1A2/q1.out 
+The original string is, 
+ Hello, world!
+
+In Process 1 the string that will get piped to Process 2 is, 
+ Hello, world!
+
+Received string from child process: 
+ Hello, world!
+
+The reversed string is, (from the parent process) 
+ hELLO, WORLD!
+
+]0;kyle@kyle-VirtualBox: ~/CS4540/A2kyle@kyle-VirtualBox:~/CS4540/A2$ 
+Result read from process 2 is, 
+ hELLO, WORLD!
+
+ls/[K P1A2/
+main.c  main.c~  [0m[01;32mq1.out[0m
+]0;kyle@kyle-VirtualBox: ~/CS4540/A2kyle@kyle-VirtualBox:~/CS4540/A2$ exit
+exit
+
+Script done on Wed 15 Oct 2014 04:41:03 PM EDT

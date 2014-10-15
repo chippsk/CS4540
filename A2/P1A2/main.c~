@@ -81,7 +81,6 @@ int main(void){
                 //Perform reversal of cases, and write to the second pipe.
                 fprintf(stderr,"The reversed string is, (from the parent process) \n %s\n",reverse_case(string));
                 write(b[1],string,(strlen(string)+1));
-
         }
         
         return(0);
@@ -92,13 +91,13 @@ int main(void){
 //if the char is lowercase.  
 //This function will step through each char in a string.
 char* reverse_case(char* str) {
-	if (str) {
-		char* p;
-		int c;
-		for (p = str; ((c=*p)!=0); ++p)
-			if (isalpha(c))
-		*p = (islower(c)?toupper(c):tolower(c));
-	}
+    if (str) {
+        char* ptr;
+        int ch
+        for (ptr = str; ((ch=*ptr)!=0); ++ptr)
+            if (isalpha(ch))
+                *ptr = (islower(ch)?toupper(ch):tolower(ch));
+    }
     return str;
 }
        
