@@ -1,0 +1,61 @@
+Script started on Fri 31 Oct 2014 10:38:28 PM EDT
+ _______________________________________
+/ The secret source of humor is not joy \
+| but sorrow; there is no humor in      |
+\ Heaven. -- Mark Twain                 /
+ ---------------------------------------
+   \         ,        ,
+    \       /(        )`
+     \      \ \___   / |
+            /- _  `-/  '
+           (/\/ \ \   /\
+           / /   | `    \
+           O O   ) /    |
+           `-^--'`<     '
+          (_.)  _  )   /
+           `.___/`    /
+             `-----' /
+<----.     __ / __   \
+<----|====O)))==) \) /====
+<----'    `--' `.__,' \
+             |        |
+              \       /
+        ______( (_  / \______
+      ,'  ,-----'   |        \
+      `--{__________)        \/
+[01;32mugolyok@pyotr[01;34m ~/CS4540/A3 $[00m make clean
+rm -rf P1A3/*.o
+[01;32mugolyok@pyotr[01;34m ~/CS4540/A3 $[00m make
+gcc -o P1A3/q1.out P1A3/main.c -lpthread
+[01;32mugolyok@pyotr[01;34m ~/CS4540/A3 $[00m ./P1A3/q1.out 
+Enter the amount of integers you want to enter 5
+Enter a value 12
+Enter a value 83
+Enter a value 25
+Enter a value 84
+Enter a value 23
+The average is 45.400002
+The minimum is 12
+The maximum is 84
+[01;32mugolyok@pyotr[01;34m ~/CS4540/A3 $[00m ./P1A3/q1.out 
+Enter the amount of integers you want to enter 5
+Enter a value -10
+Enter a value 20
+Enter a value - 0
+Enter a value 34
+Enter a value 2
+The average is 9.200000
+The minimum is -10
+The maximum is 34
+[01;32mugolyok@pyotr[01;34m ~/CS4540/A3 $[00m ./P1A3/q1.out 
+Enter the amount of integers you want to enter 3
+Enter a value 1
+Enter a value 2
+Enter a value 3
+The average is 2.000000
+The minimum is 1
+The maximum is 3
+[01;32mugolyok@pyotr[01;34m ~/CS4540/A3 $[00m exit
+exit
+
+Script done on Fri 31 Oct 2014 10:39:27 PM EDT

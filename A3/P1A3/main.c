@@ -1,13 +1,14 @@
 /* Course: CS 4540 – Fall 2014
-// Assignment 3 - Problem 1
-// Name: Kyle Chipps
-// E-mail: kyle.d.chipps@wmich.edu
- Submitted: 
+Assignment 3 - Problem 1
+Name: Kyle Chipps
+E-mail: kyle.d.chipps@wmich.edu
+Submitted: 
 */
 
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #define MAX 25
 
@@ -49,7 +50,6 @@ int main(void){
 		listNums.array[i] = atoi(buffer);
 	}
 
-	//get_avg((void*) ptrList);
 	/*Spin us up some threads*/
 	pthread_t thread1;
 	pthread_t thread2;
