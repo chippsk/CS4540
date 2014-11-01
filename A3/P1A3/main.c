@@ -39,7 +39,6 @@ int main(void){
 	int amount = atoi(buffer);
 
 	/*Must allocate size of struct plus amount of space for array */
-	fprintf(stderr,"Size of array is %lu\n", amount * sizeof(int));
 	listNums.array = malloc(amount * sizeof(int));
 	listNums.size = amount;
 
@@ -50,34 +49,42 @@ int main(void){
 		listNums.array[i] = atoi(buffer);
 	}
 
-	int j;
-	for(j=0;j<amount;j++){
-		fprintf(stderr,"Array at location %d is %d\n", j, listNums.array[j]);
-	}
-
+	//get_avg((void*) ptrList);
 	/*Spin us up some threads*/
-	pthread_t thread;
+	pthread_t thread1;
+	pthread_t thread2;
+	pthread_t thread3;
 
-	if(pthread_create(&thread,NULL,get_avg,(void*) ptrList)){
-		fprintf(stderr,"Error creating get_avg thread");
+	if(pthread_create(&thread1,NULL,get_avg,(void*) ptrList)){
+		fprintf(stderr,"Error creating get_avg thread\n");
 		return 1;
 	}
 
-	if(pthread_create(&thread,NULL,get_max,(void*) ptrList)){
-		fprintf(stderr,"Error creating get_max thread");
+	if(pthread_create(&thread2,NULL,get_min,(void*) ptrList)){
+		fprintf(stderr,"Error creating get_max thread\n");
 		return 1;
 	}
 
-	if(pthread_create(&thread,NULL,get_min,(void*) ptrList)){
-		fprintf(stderr,"Error creating get_max thread");
+	if(pthread_create(&thread3,NULL,get_max,(void*) ptrList)){
+		fprintf(stderr,"Error creating get_max thread\n");
 		return 1;
 	}
 
 	/*Join the threads*/
-	if(pthread_join(thread,NULL)){
+	if(pthread_join(thread1,NULL)){
 		fprintf(stderr,"Error joining thread\n");
 		return 2;
 	}
+
+	if(pthread_join(thread2,NULL)){
+                fprintf(stderr,"Error joining thread\n");
+                return 2;
+        }
+
+	if(pthread_join(thread3,NULL)){
+                fprintf(stderr,"Error joining thread\n");
+                return 2;
+        }
 	/*Output from the global variables*/
 	fprintf(stderr,"The average is %.6f\n",avg);
 	fprintf(stderr,"The minimum is %d\n",min);
@@ -99,7 +106,6 @@ void* get_avg(void* pt){
 		sum += ptr->array[i];
 	}
 	avg = (sum / ptr->size);
-	fprintf(stderr,"average in avg is %.6f\n",avg);
 }
 
 /*get_max takes void star pointer, turns it into a struct given by pthread create, calculates maximum of
@@ -115,7 +121,6 @@ void* get_max(void* pt){
 		}
 	}
 	max = largest;
-	fprintf(stderr,"maximum in max is %d\n",max);
 }
 
 /*get_min takes void star pointer, turns it into a struct given by pthread create, calculates minimum of
@@ -131,5 +136,4 @@ void* get_min(void* pt){
 		}
 	}
 	min = smallest;
-	fprintf(stderr,"minimum in min is %d\n",min);
 }
