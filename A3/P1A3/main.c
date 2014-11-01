@@ -99,6 +99,7 @@ void* get_avg(void* pt){
 		sum += ptr->array[i];
 	}
 	avg = (sum / ptr->size);
+	fprintf(stderr,"average in avg is %.6f\n",avg);
 }
 
 /*get_max takes void star pointer, turns it into a struct given by pthread create, calculates maximum of
@@ -114,6 +115,7 @@ void* get_max(void* pt){
 		}
 	}
 	max = largest;
+	fprintf(stderr,"maximum in max is %d\n",max);
 }
 
 /*get_min takes void star pointer, turns it into a struct given by pthread create, calculates minimum of
@@ -129,4 +131,5 @@ void* get_min(void* pt){
 		}
 	}
 	min = smallest;
+	fprintf(stderr,"minimum in min is %d\n",min);
 }
