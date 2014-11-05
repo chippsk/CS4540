@@ -2,7 +2,7 @@
 Assignment 3 - Problem 1
 Name: Kyle Chipps
 E-mail: kyle.d.chipps@wmich.edu
-Submitted: 
+Submitted:11/05/2014
 */
 
 #include <stdio.h>
