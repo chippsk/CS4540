@@ -1,0 +1,26 @@
+Script started on Sat 15 Nov 2014 03:47:15 PM EST
+]0;kyle@kyle-VirtualBox: ~/CS4540/A4kyle@kyle-VirtualBox:~/CS4540/A4$ make clean
+rm -rf P1A4/*.o P1A4/q1.out
+]0;kyle@kyle-VirtualBox: ~/CS4540/A4kyle@kyle-VirtualBox:~/CS4540/A4$ make
+gcc -o P1A4/q1.out P1A4/main.c -lpthread
+]0;kyle@kyle-VirtualBox: ~/CS4540/A4kyle@kyle-VirtualBox:~/CS4540/A4$ ./P1A4/
+bash: ./P1A4/: Is a directory
+]0;kyle@kyle-VirtualBox: ~/CS4540/A4kyle@kyle-VirtualBox:~/CS4540/A4$ ./P1A4/q1.out 
+Estimate of pi 
+ 3.14225077629089355469 
+Estimate of pi 
+ 3.14209389686584472656 
+Estimate of pi 
+ 3.14180421829223632812 
+Estimate of pi 
+ 3.14192748069763183594 
+Estimate of pi 
+ 3.14191746711730957031 
+The amount of valid points (circleCount) is 39273966
+The total number of points generated is 50000000
+Estimate of pi 
+ 3.14191746711730957031 
+Acutal pi is 
+ 3.14159274101257324219 
+]0;kyle@kyle-VirtualBox: ~/CS4540/A4kyle@kyle-VirtualBox:~/CS4540/A4$ exit
+Script done on Sat 15 Nov 2014 03:47:36 PM EST
