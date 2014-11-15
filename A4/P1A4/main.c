@@ -1,3 +1,9 @@
+/* Course: CS 4540 – Fall 2014
+Assignment 4 - Problem 1
+Name: Kyle Chipps
+E-mail: kyle.d.chipps@wmich.edu
+Submitted:
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -8,20 +14,28 @@
 #define NR_PTS 10000000
 #define NR_THREADS 5;
 
+/*Variables used by threads */
 int circleCount;
 int totalCount;
+
+/*Hard coded actual pi value for comparision at the end */
 float actualPi = 3.14159265358979323846264338327950288419716939937510;
+
 pthread_mutex_t lock;
 
 void* generate_points();
 
+/*Main will spin up all the threads and calculate an estimation of pi at the end. */
 int main(){
+
+   /*Initialize the globals to avoid tomfoolary. */
    circleCount = 0;
    totalCount = 0;
-   double x,y;
-   float pi;
+   
    srand(SEED);
 
+
+   /*Declare all our threads  */
    pthread_t thread1;
    pthread_t thread2;
    pthread_t thread3;
@@ -87,8 +101,7 @@ int main(){
       return 2;
    }
 
-   //perform the actual calculation that esimates pi
-   //it will be 50 million for 5 threads.  do this better later.
+   /*Print statement block that shows number of valid points, total points, the estimate of pi and the actual value of pi */
    fprintf(stderr,"The amount of valid points (circleCount) is %d\n",circleCount);
    fprintf(stderr,"The total number of points generated is %d\n",totalCount);
    //pi=(float)circleCount/totalCount*4;
@@ -100,6 +113,8 @@ int main(){
    return 0;
 }
 
+/*This method is what the threads run when spun up.  It creates two random x,y pairs and uses a global define NR_PTS.  
+It checks to see if they are valid, updates a count then updates a global variable within a mutex lock so many threads can run*/
 void* generate_points(){
    
    int i;
@@ -110,23 +125,25 @@ void* generate_points(){
    for ( i=0; i<NR_PTS; i++) {
       x = (double)rand()/RAND_MAX;
       y = (double)rand()/RAND_MAX;
-      //fprintf(stderr,"X is %g",x);
-      //fprintf(stderr,"Y is %g",y);
-      //Square results and check to see if they are less than 1
+      /*Using the distance formula to find if they are a valid set of coords */
       z = x*x+y*y;
-      //check to see if they are valid, (on the circle)
       if (z<=1){
         count++; 
       }  
    }
-   //update circleCount
+
+   /*Critial Section */
    pthread_mutex_lock(&lock);
    circleCount += count;
    totalCount +=NR_PTS;
    estimate_pi(totalCount);
    pthread_mutex_unlock(&lock);
+   /*End Critial Section */
+
 }
 
+/*Esitmates the value of pi based on the total entries givien.  This allows us to calculate at the end of each thread along with a total after
+all the threads have executed and exited. */
 int estimate_pi(int totalTries){
    float pi;
    pi = (float)circleCount/totalTries*4;
