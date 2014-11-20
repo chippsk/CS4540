@@ -9,6 +9,7 @@ Submitted:
 #include <math.h>
 #include <string.h>
 #include <pthread.h>
+#include <time.h>
 
 #define SEED 35791246
 #define NR_PTS 10000000
@@ -27,7 +28,9 @@ void* generate_points();
 
 /*Main will spin up all the threads and calculate an estimation of pi at the end. */
 int main(){
-
+   clock_t start,end;
+   double cpu_time_used;
+   start = clock();
    /*Initialize the globals to avoid tomfoolary. */
    circleCount = 0;
    totalCount = 0;
@@ -110,6 +113,9 @@ int main(){
    fprintf(stderr,"Acutal pi is \n %.20f \n", actualPi);
    
    pthread_mutex_destroy(&lock);
+   end = clock();
+   cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
+   fprintf(stderr,"Time elapsed %f",cpu_time_used);
    return 0;
 }
 
