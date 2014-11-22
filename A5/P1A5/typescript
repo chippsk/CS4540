@@ -1,0 +1,208 @@
+Script started on Sat 22 Nov 2014 12:20:56 PM EST
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ make clean
+make -C /lib/modules/3.13.0-32-generic/build M="/home/kyle/CS4540/A5/P1A5" clean 
+make[1]: Entering directory `/usr/src/linux-headers-3.13.0-32-generic'
+  CLEAN   /home/kyle/CS4540/A5/P1A5/.tmp_versions
+  CLEAN   /home/kyle/CS4540/A5/P1A5/Module.symvers
+make[1]: Leaving directory `/usr/src/linux-headers-3.13.0-32-generic'
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ dmesg-[K -c
+dmesg: klogctl failed: Operation not permitted
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ sudo dmesg -c
+[sudo] password for kyle: 
+[ 4632.694737] Removing Module
+[ 4640.523162] Adding Module
+[ 4640.523167] do_init_module: 'ProjectA5'->init suspiciously returned 13, it should follow 0/-E convention
+[ 4640.523167] do_init_module: loading module anyway...
+[ 4640.523170] CPU: 0 PID: 10948 Comm: insmod Tainted: GF          O 3.13.0-32-generic #57-Ubuntu
+[ 4640.523171] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[ 4640.523173]  000000000000000d ffff88005d5cddb8 ffffffff8171bcb4 ffffffffa041a018
+[ 4640.523176]  ffff88005d5cdee8 ffffffff810e1fbc ffffffff810dda30 ffff88005d5cde48
+[ 4640.523177]  ffffffffa010d000 00000000000002b8 ffff88005d5cdf08 ffffffffa041a018
+[ 4640.523179] Call Trace:
+[ 4640.523185]  [<ffffffff8171bcb4>] dump_stack+0x45/0x56
+[ 4640.523188]  [<ffffffff810e1fbc>] load_module+0x130c/0x1b40
+[ 4640.523191]  [<ffffffff810dda30>] ? store_uevent+0x40/0x40
+[ 4640.523193]  [<ffffffff810e2966>] SyS_finit_module+0x86/0xb0
+[ 4640.523196]  [<ffffffff8172c87f>] tracesys+0xe1/0xe6
+[ 4828.091556] Removing Module
+[ 4835.234392] 
+[ 4835.234392] 
+[ 4835.234392] 
+[ 4835.234392] ----Adding Module----
+[ 4835.234392] 
+[ 4835.234392] 
+[ 4877.570745] 
+[ 4877.570745] 
+[ 4877.570745] 
+[ 4877.570745] ----Removing Module----
+[ 4877.570745] 
+[ 4877.570745] 
+[ 4897.623415] 
+[ 4897.623415] 
+[ 4897.623415] 
+[ 4897.623415] ----Adding Module----
+[ 4897.623415] 
+[ 4897.623415] 
+[ 4973.985325] 
+[ 4973.985325] 
+[ 4973.985325] 
+[ 4973.985325] ----Removing Module----
+[ 4973.985325] 
+[ 4973.985325] 
+[ 5205.104080] 
+[ 5205.104080] 
+[ 5205.104080] 
+[ 5205.104080] ----Adding Module----
+[ 5205.104080] 
+[ 5205.104080] 
+[ 5229.017787] 
+[ 5229.017787] 
+[ 5229.017787] 
+[ 5229.017787] ----Removing Module----
+[ 5229.017787] 
+[ 5229.017787] 
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ dms[Kestg[K[Kg
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ dmesg
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ make
+make -C /lib/modules/3.13.0-32-generic/build M="/home/kyle/CS4540/A5/P1A5" modules
+make[1]: Entering directory `/usr/src/linux-headers-3.13.0-32-generic'
+  CC [M]  /home/kyle/CS4540/A5/P1A5/ProjectA5.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/kyle/CS4540/A5/P1A5/ProjectA5.mod.o
+  LD [M]  /home/kyle/CS4540/A5/P1A5/ProjectA5.ko
+make[1]: Leaving directory `/usr/src/linux-headers-3.13.0-32-generic'
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ lsmod
+Module                  Size  Used by
+btrfs                 835954  0 
+raid6_pq               97812  1 btrfs
+xor                    21411  1 btrfs
+ufs                    74890  0 
+qnx4                   13317  0 
+hfsplus               107516  0 
+hfs                    54677  0 
+minix                  36140  0 
+ntfs                   97369  0 
+msdos                  17332  0 
+jfs                   181348  0 
+xfs                   912173  0 
+libcrc32c              12644  2 xfs,btrfs
+nls_utf8               12557  1 
+isofs                  39835  1 
+vboxsf                 43786  0 
+pci_stub               12622  1 
+vboxpci                23194  0 
+vboxnetadp             25670  0 
+vboxnetflt             27613  0 
+vboxdrv               339502  3 vboxnetadp,vboxnetflt,vboxpci
+snd_intel8x0           38153  2 
+snd_ac97_codec        130285  1 snd_intel8x0
+ac97_bus               12730  1 snd_ac97_codec
+snd_pcm               102099  2 snd_ac97_codec,snd_intel8x0
+snd_page_alloc         18710  2 snd_intel8x0,snd_pcm
+snd_seq_midi           13324  0 
+snd_seq_midi_event     14899  1 snd_seq_midi
+snd_rawmidi            30144  1 snd_seq_midi
+joydev                 17381  0 
+snd_seq                61560  2 snd_seq_midi_event,snd_seq_midi
+snd_seq_device         14497  3 snd_seq,snd_rawmidi,snd_seq_midi
+rfcomm                 69160  0 
+bnep                   19624  2 
+bluetooth             391196  10 bnep,rfcomm
+snd_timer              29482  2 snd_pcm,snd_seq
+snd                    69238  12 snd_ac97_codec,snd_intel8x0,snd_timer,snd_pcm,snd_seq,snd_rawmidi,snd_seq_device,snd_seq_midi
+serio_raw              13462  0 
+vboxvideo              12658  0 
+i2c_piix4              22155  0 
+soundcore              12680  1 snd
+vboxguest             248441  7 vboxsf
+drm                   303102  1 vboxvideo
+mac_hid                13205  0 
+parport_pc             32701  0 
+ppdev                  17671  0 
+lp                     17759  0 
+parport                42348  3 lp,ppdev,parport_pc
+hid_generic            12548  0 
+usbhid                 52570  0 
+hid                   106148  2 hid_generic,usbhid
+psmouse               106678  0 
+ahci                   25819  2 
+libahci                32560  1 ahci
+e1000                 145174  0 
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ sudo insmod ProjectA5.ko
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ lsmod
+Module                  Size  Used by
+ProjectA5              12498  0 
+btrfs                 835954  0 
+raid6_pq               97812  1 btrfs
+xor                    21411  1 btrfs
+ufs                    74890  0 
+qnx4                   13317  0 
+hfsplus               107516  0 
+hfs                    54677  0 
+minix                  36140  0 
+ntfs                   97369  0 
+msdos                  17332  0 
+jfs                   181348  0 
+xfs                   912173  0 
+libcrc32c              12644  2 xfs,btrfs
+nls_utf8               12557  1 
+isofs                  39835  1 
+vboxsf                 43786  0 
+pci_stub               12622  1 
+vboxpci                23194  0 
+vboxnetadp             25670  0 
+vboxnetflt             27613  0 
+vboxdrv               339502  3 vboxnetadp,vboxnetflt,vboxpci
+snd_intel8x0           38153  2 
+snd_ac97_codec        130285  1 snd_intel8x0
+ac97_bus               12730  1 snd_ac97_codec
+snd_pcm               102099  2 snd_ac97_codec,snd_intel8x0
+snd_page_alloc         18710  2 snd_intel8x0,snd_pcm
+snd_seq_midi           13324  0 
+snd_seq_midi_event     14899  1 snd_seq_midi
+snd_rawmidi            30144  1 snd_seq_midi
+joydev                 17381  0 
+snd_seq                61560  2 snd_seq_midi_event,snd_seq_midi
+snd_seq_device         14497  3 snd_seq,snd_rawmidi,snd_seq_midi
+rfcomm                 69160  0 
+bnep                   19624  2 
+bluetooth             391196  10 bnep,rfcomm
+snd_timer              29482  2 snd_pcm,snd_seq
+snd                    69238  12 snd_ac97_codec,snd_intel8x0,snd_timer,snd_pcm,snd_seq,snd_rawmidi,snd_seq_device,snd_seq_midi
+serio_raw              13462  0 
+vboxvideo              12658  0 
+i2c_piix4              22155  0 
+soundcore              12680  1 snd
+vboxguest             248441  7 vboxsf
+drm                   303102  1 vboxvideo
+mac_hid                13205  0 
+parport_pc             32701  0 
+ppdev                  17671  0 
+lp                     17759  0 
+parport                42348  3 lp,ppdev,parport_pc
+hid_generic            12548  0 
+usbhid                 52570  0 
+hid                   106148  2 hid_generic,usbhid
+psmouse               106678  0 
+ahci                   25819  2 
+libahci                32560  1 ahci
+e1000                 145174  0 
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ rmmod ProjectA5 [1@s[1@u[1@d[1@o[1@ 
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ dmesg
+[ 5296.129970] 
+[ 5296.129970] 
+[ 5296.129970] 
+[ 5296.129970] ----Adding Module----
+[ 5296.129970] 
+[ 5296.129970] 
+[ 5314.744553] 
+[ 5314.744553] 
+[ 5314.744553] 
+[ 5314.744553] ----Removing Module----
+[ 5314.744553] 
+[ 5314.744553] 
+]0;kyle@kyle-VirtualBox: ~/CS4540/A5/P1A5kyle@kyle-VirtualBox:~/CS4540/A5/P1A5$ exit
+exit
+
+Script done on Sat 22 Nov 2014 12:22:05 PM EST
